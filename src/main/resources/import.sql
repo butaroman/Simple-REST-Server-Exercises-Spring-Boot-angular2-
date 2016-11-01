@@ -1,0 +1,31 @@
+insert into Movie values(1,null,'Gone with the Wind');
+insert into Movie values(2,'George Lucas','Star Wars');
+insert into Movie values(3,'George Lucas','The Sound of Music');
+insert into Movie values(4,'Steven Spielberg','E.T.');
+insert into Movie values(5,'James Cameron','Titanic');
+insert into Movie values(6,null,'Snow White');
+insert into Movie values(7,'James Cameron','Avatar');
+insert into Movie values(8,'Steven Spielberg','Raiders of the Lost Ark');
+
+insert into User values(11,'Sarah Martinez');
+insert into User values(12,'Daniel Lewis');
+insert into User values(13,'Brittany Harris');
+insert into User values(14,'Mike Anderson');
+insert into User values(15,'Chris Jackson');
+insert into User values(16,'Elizabeth Thomas');
+insert into User values(17,'James Cameron');
+insert into User values(18,'Ashley White');
+
+insert into Rating values(21,2,'2016-02-29',1,11);
+insert into Rating values(22,4,'2016-03-01',1,11);
+insert into Rating values(23,4,null,6,12);
+insert into Rating values(24,2,'2016-02-26',3,13);
+insert into Rating values(25,4,'2016-02-25',8,13);
+insert into Rating values(26,2,'2016-02-24',8,13);
+insert into Rating values(27,3,'2016-02-13',1,14);
+insert into Rating values(28,3,'2016-02-22',3,15);
+insert into Rating values(29,2,'2016-02-11',4,15);
+insert into Rating values(30,4,null,8,15);
+insert into Rating values(31,3,'2016-02-19',7,16);
+insert into Rating values(32,5,'2016-02-22',6,16);
+insert into Rating values(33,3,'2016-02-22',4,18);
