@@ -34,6 +34,14 @@ export class MovieService {
                  .catch(this.handleError);
     }
 
+    deleteMovie(movie: Movie): Promise<Movie> {
+        return this.http.delete(this.url + '/movie/' + movie.id)
+                    .toPromise()
+                    .then(res => movie)
+                    .catch(this.handleError);
+    }
+
+
      getMoviesTitleByRatingIsNull(): Promise<string[]> {
         return this.http.get(this.url + "task4")
                  .toPromise()

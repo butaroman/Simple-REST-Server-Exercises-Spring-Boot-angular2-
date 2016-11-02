@@ -15,6 +15,7 @@ import {Movie} from '../../shared/model/movie';
                 <td>{{movie.id}}</td>
                 <td>{{movie.title}}</td>
                 <td>{{movie.director}}</td>
+                <td><button (click)="deleteMovie(movie)">Delete</button></td>
         </tr>
     </table>
 `,
@@ -33,16 +34,15 @@ export class Task0MovieComponent implements OnInit{
         this.movieService.getAllMovies().then(movieArr => this.movieArr = movieArr);          
     }
 
-    addStaticMovie():void {
-       let m1 = new Movie();
-       m1.id = 9;
-       m1.title = "Deadpool";
-       m1.director = "Tim Miller";
+    deleteMovie(movie: Movie):void {
+        this.movieService.deleteMovie(movie).then(movie => this.deleteMovieFromArr(movie));
+    }
 
-       let m2 = new Movie();
-       m2.id = 10;
-       m2.title = "The 300 spartans";
-       m2.director = " Zak Snyder";
+     private deleteMovieFromArr(movie:Movie): void {
+         let index = this.movieArr.indexOf(movie);
+         if(index > -1) {
+            this.movieArr.splice(index, 1);
+         }
     }
 
  }

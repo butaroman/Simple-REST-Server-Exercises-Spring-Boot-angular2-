@@ -7,6 +7,7 @@ import com.roman.buta.repository.UserRepository;
 import com.roman.buta.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -19,24 +20,28 @@ public class RatingServiceImpl implements RatingService {
     RatingRepository ratingRepository;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Override
+    @Transactional
     public Rating addRating(Rating rating) {
         return ratingRepository.saveAndFlush(rating);
     }
 
     @Override
+    @Transactional
     public Rating findById(int id) {
         return ratingRepository.findOne(id);
     }
 
     @Override
+    @Transactional
     public List<Rating> findAll() {
         return ratingRepository.findAll();
     }
 
     @Override
+    @Transactional
     public List<Rating> findAllAndFixNullDate() {
         List<Integer> userIdList = userRepository.getUserIdByRatingDateIsNull();
         for(int i: userIdList) {
@@ -53,13 +58,14 @@ public class RatingServiceImpl implements RatingService {
     }
 
     @Override
-    public List<Rating> findByRating(Integer r1, Integer r2) {
+    @Transactional
+    public List<Rating> findByRating(int r1, int r2) {
         return  ratingRepository.findByRatingBetweenOrderByRatingDateAsc(r1,r2);
     }
 
     @Override
-    public void deleteRating(Rating rating) {
-        ratingRepository.delete(rating);
+    @Transactional
+    public void deleteRating(int id) {
+        ratingRepository.delete(id);
     }
-
 }

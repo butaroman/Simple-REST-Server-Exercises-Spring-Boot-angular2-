@@ -15,6 +15,7 @@ import {Rating} from '../../shared/model/rating';
                 <td>{{rating.id}}</td>
                 <td>{{rating.rating}}</td>
                 <td>{{getDate(rating.ratingDate)}}</td>
+                <td><button (click)="deleteRating(rating)">Delete</button></td>
         </tr>
     </table>
 `,
@@ -39,5 +40,16 @@ export class Task0RatingComponent implements OnInit{
         } else {
             return new Date(date).toLocaleDateString();
         }   
+    }
+
+    deleteRating(rating: Rating):void {
+        this.ratingService.deleteRating(rating).then(rating => this.deleteRatingFromArr(rating));
+    }
+
+     private deleteRatingFromArr(rating:Rating): void {
+         let index = this.ratingArr.indexOf(rating);
+         if(index > -1) {
+            this.ratingArr.splice(index, 1);
+         }
     }
  }

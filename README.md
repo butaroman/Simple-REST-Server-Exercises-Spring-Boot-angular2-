@@ -3,8 +3,7 @@
 ## 2) run "npm install" in ../src/main/resources/static/ 
 ## 3) run "npm start" in ../src/main/resources/static/ 
 
-
-
 #View example
-![task0](https://cloud.githubusercontent.com/assets/19957536/19908427/f6463722-a08b-11e6-8f91-9abb535c8565.jpg)
-![task3](https://cloud.githubusercontent.com/assets/19957536/19908430/fc73608e-a08b-11e6-90ab-fe8caecf37c7.jpg)
+![task0users](https://cloud.githubusercontent.com/assets/19957536/19923607/e9011284-a0f0-11e6-8f89-a427325b3f5c.jpg)
+![task6](https://cloud.githubusercontent.com/assets/19957536/19923609/ee8eb44a-a0f0-11e6-803c-3cd44cb6728a.jpg)
+

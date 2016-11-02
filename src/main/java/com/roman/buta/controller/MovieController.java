@@ -18,11 +18,12 @@ public class MovieController {
     private static final Logger log = Logger.getLogger(MovieController.class);
 
     @Autowired
-    MovieService movieService;
+    private MovieService movieService;
 
     @RequestMapping(value = "/task0movies", method = RequestMethod.GET)
     public ResponseEntity<List<Movie>> getAllMovie() {
         List<Movie> movieList = movieService.findAll();
+        log.info("Task0movies. Get all movies: " + movieList);
         return new ResponseEntity<>(movieList, HttpStatus.OK);
     }
 
@@ -32,12 +33,12 @@ public class MovieController {
         Movie m2 = new Movie(10, "The 300 spartans", "Zak Snyder");
         movieService.addMovie(m1);
         movieService.addMovie(m2);
-        log.info("Add movie: " + movieService.addMovie(m1));
-        log.info("Add movie: " + movieService.addMovie(m2));
+        log.info("Task2. Add movie: " + movieService.addMovie(m1));
+        log.info("Task2. Add movie: " + movieService.addMovie(m2));
         return new ResponseEntity<>( movieService.findAll(), HttpStatus.OK);
     }
 
-    @RequestMapping(value="saveMovie", method = RequestMethod.POST)
+    @RequestMapping(value="/save", method = RequestMethod.POST)
     public ResponseEntity<Movie> saveMovie(@RequestBody Movie movie) {
         log.info("Save movie: " + movie);
         return new ResponseEntity<>( movieService.addMovie(movie), HttpStatus.OK);
@@ -49,6 +50,7 @@ public class MovieController {
         for(Movie m: movieService.findByRatingIsNull()) {
             titleList.add(m.getTitle());
         }
+        log.info("Task4. Get movies title that have no rating: " + titleList);
         return new ResponseEntity<>(titleList, HttpStatus.OK);
     }
 
@@ -56,14 +58,13 @@ public class MovieController {
     public ResponseEntity<List<Movie>> deleteMovie() {
         int movieId1 = 9;
         int movieId2 = 10;
-        log.info("Delete movies with id: " + movieId1 + ", " + movieId1 );
+        log.info("Task5. Delete movies with id: " + movieId1 + ", " + movieId1 );
         movieService.deleteMovie(movieId1);
         movieService.deleteMovie(movieId2);
-
         return new ResponseEntity<>(movieService.findAll(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/movie/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Movie> deleteMovie(@PathVariable("id") Integer id) {
         log.info("Delete movie with id: " + id );
         movieService.deleteMovie(id);

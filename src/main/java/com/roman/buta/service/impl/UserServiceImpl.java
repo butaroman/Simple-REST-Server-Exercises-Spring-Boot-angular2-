@@ -5,6 +5,7 @@ import com.roman.buta.repository.UserRepository;
 import com.roman.buta.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,30 +13,29 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Override
+    @Transactional
     public User addUser(User user) {
         return userRepository.saveAndFlush(user);
     }
 
     @Override
+    @Transactional
     public User findById(int id) {
         return userRepository.findOne(id);
     }
 
     @Override
+    @Transactional
     public List<User> findAll() {
         return userRepository.findAll();
     }
 
     @Override
-    public List<Integer> getUserIdByRatingDateIsNull() {
-        return userRepository.getUserIdByRatingDateIsNull();
-    }
-
-    @Override
-    public void deleteUser(User user) {
-        userRepository.delete(user);
+    @Transactional
+    public void deleteUser(int id) {
+        userRepository.delete(id);
     }
 }

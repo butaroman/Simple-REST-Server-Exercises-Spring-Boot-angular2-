@@ -12,8 +12,6 @@ public interface UserService {
 
     List<User> findAll();
 
-    List<Integer> getUserIdByRatingDateIsNull();
-
-    void deleteUser(User user);
+    void deleteUser(int id);
 
 }

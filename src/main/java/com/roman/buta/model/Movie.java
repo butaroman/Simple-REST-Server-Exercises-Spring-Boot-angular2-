@@ -1,10 +1,5 @@
 package com.roman.buta.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,6 +9,7 @@ public class Movie {
 
     @Id
     @Column(name = "id")
+
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -23,8 +19,6 @@ public class Movie {
     @Column(name = "director")
     private String director;
 
-   // @JsonIgnore
-   // @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie", cascade = CascadeType.REMOVE)
     private List<Rating> rating;
 

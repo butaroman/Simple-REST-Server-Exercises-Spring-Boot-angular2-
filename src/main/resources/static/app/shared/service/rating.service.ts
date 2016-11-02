@@ -42,6 +42,13 @@ export class RatingService {
                  .catch(this.handleError);
     }
 
+    deleteRating(rating: Rating): Promise<Rating> {
+        return this.http.delete(this.url + '/rating/' + rating.id)
+                    .toPromise()
+                    .then(res => rating)
+                    .catch(this.handleError);
+    }
+
     private handleError(error: any):Promise<any> {
         console.log('HandleError', error);
         return Promise.reject(error.message || error);

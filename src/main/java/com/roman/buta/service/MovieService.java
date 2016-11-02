@@ -5,6 +5,7 @@ import com.roman.buta.model.Movie;
 import java.util.List;
 
 public interface MovieService {
+
     Movie addMovie(Movie movie);
 
     Movie findById(int id);
@@ -13,5 +14,5 @@ public interface MovieService {
 
     List<Movie> findByRatingIsNull();
 
-    boolean deleteMovie(Integer movieId);
+    boolean deleteMovie(int movieId);
 }

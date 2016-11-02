@@ -1,9 +1,6 @@
 package com.roman.buta.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -22,13 +19,11 @@ public class Rating {
     Timestamp ratingDate;
 
     @JsonIgnore
-    //@JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_id", nullable = false)
     Movie movie;
 
     @JsonIgnore
-    //@JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     User user;

@@ -14,8 +14,8 @@ public interface RatingService {
 
     List<Rating> findAllAndFixNullDate();
 
-    List<Rating> findByRating(Integer r1, Integer r2);
+    List<Rating> findByRating(int r1, int r2);
 
-    void deleteRating(Rating  rating);
+    void deleteRating(int id);
 
 }

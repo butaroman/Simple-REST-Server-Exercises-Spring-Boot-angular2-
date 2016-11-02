@@ -1,9 +1,5 @@
 package com.roman.buta.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,8 +15,6 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    //@JsonIgnore
-    //@JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Rating> rating;
 
